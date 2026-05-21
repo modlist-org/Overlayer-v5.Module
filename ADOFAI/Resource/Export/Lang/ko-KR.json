@@ -1,0 +1,12 @@
+{
+  "ko-KR": {
+    "0KTL": "DO_NOT_TRANSLATE_THIS_KEY!",
+    "0NATIVELANG": "한국어",
+    "0TRANSLATORS": [
+      "OVERLAYER"
+    ],
+    "ADOFAI": "얼불춤",
+    "DESC_SHOW_AUTOPLAY_JUDGMENT": "자동 플레이에서도 입력 계기판에 실제 판정을 표시하도록 패치합니다",
+    "SHOW_AUTOPLAY_JUDGMENT": "자동 플레이 판정 표시"
+  }
+}

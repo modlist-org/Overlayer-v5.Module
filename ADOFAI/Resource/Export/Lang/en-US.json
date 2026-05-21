@@ -1,0 +1,12 @@
+{
+  "en-US": {
+    "0KTL": "DO_NOT_TRANSLATE_THIS_KEY!",
+    "0NATIVELANG": "English",
+    "0TRANSLATORS": [
+      "OVERLAYER"
+    ],
+    "ADOFAI": "ADOFAI",
+    "DESC_SHOW_AUTOPLAY_JUDGMENT": "Applies a patch to show the true judgment in AutoPlay on the Hit Error Meter",
+    "SHOW_AUTOPLAY_JUDGMENT": "Show Autoplay Judgment"
+  }
+}
