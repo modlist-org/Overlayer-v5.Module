@@ -413,6 +413,6 @@
 		</ItemGroup>
 
 		<MakeDir Directories="$(GamePath)/UserData/Overlayer/Module/ADOFAI/" />
-		<Copy SourceFiles="@(ExportFiles)" DestinationFiles="@(ExportFiles->'$(GamePath)/UserData/Overlayer/Module/ADOAFI/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+		<Copy SourceFiles="@(ExportFiles)" DestinationFiles="@(ExportFiles->'$(GamePath)/UserData/Overlayer/Module/ADOFAI/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
     </Target>
 </Project>
