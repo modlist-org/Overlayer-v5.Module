@@ -4,7 +4,6 @@ using Overlayer.Module.ADOFAI.IO;
 using Overlayer.Module.ADOFAI.Patch;
 using Overlayer.Patch.Safe;
 using Overlayer.Resource;
-using Overlayer.UI;
 using Overlayer.UI.Factory;
 using Overlayer.UI.Generator;
 using Overlayer.UI.Objects;
@@ -21,7 +20,7 @@ public class MainUI {
         => MenuFactory.CreateItem(parent, "ADOFAI", MainCore.Spr.Get(UISprite.Star128), 100);
 
     private static readonly Dictionary<string, UIObject> objects = [];
-    
+
     public static void CreatePage(RectTransform parent) {
         GameObject pad = new("Pad");
         pad.transform.SetParent(parent, false);

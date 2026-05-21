@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using HarmonyLib;
 using Overlayer.Patch.Safe;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using Overlayer.Core;
 
 namespace Overlayer.Module.ADOFAI.Patch;
 
@@ -35,10 +34,10 @@ public class SP_ShowAutoJudgment() : SafeConditionalPatch(nameof(SP_ShowAutoJudg
                 codes[i + 1].operand is MethodInfo m &&
                 m.Name.Contains("get_auto");
 
-            if (!isAutoField && !isAutoGetter) {
+            if(!isAutoField && !isAutoGetter) {
                 continue;
             }
-            
+
             codes[i] = new CodeInstruction(OpCodes.Ldc_I4_0);
             codes[i + 1] = new CodeInstruction(OpCodes.Nop);
         }

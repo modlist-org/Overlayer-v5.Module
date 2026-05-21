@@ -12,9 +12,7 @@ public sealed class ADOFAISettings : ISettingsFile {
         };
     }
 
-    public void Deserialize(JToken token) {
-        ShowAutoplayJudgment = Read(token, nameof(ShowAutoplayJudgment), ShowAutoplayJudgment);
-    }
+    public void Deserialize(JToken token) => ShowAutoplayJudgment = Read(token, nameof(ShowAutoplayJudgment), ShowAutoplayJudgment);
 
     private static T? Read<T>(JToken token, string key, T fallback) {
         var value = token[key];
