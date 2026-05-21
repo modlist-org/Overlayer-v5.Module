@@ -31,6 +31,9 @@ public class Core : OverlayerModule {
         MainCore.Tr.OnLoadStart += LoadTr;
         MainCore.Tr.OnLanguageChanged += OnLanguageChanged;
 
+        LoadTr();
+        Tr.Language = MainCore.Tr.Language;
+
         SafePatchController.Add(new SP_ShowAutoJudgment());
         SafePatchController.ApplyAll();
 
