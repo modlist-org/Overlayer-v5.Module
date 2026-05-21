@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <LangVersion>default</LangVersion>
         <NeutralLanguage>en-US</NeutralLanguage>
-        <AssemblyName>Overlayer.Module.ADOAFI</AssemblyName>
+        <AssemblyName>Overlayer.Module.ADOFAI</AssemblyName>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
@@ -402,6 +402,6 @@
 
     <Target Name="PostBuild" AfterTargets="Build">
         <MakeDir Directories="$(GamePath)/UserLibs" Condition="'$(TargetPath)' != ''" />
-        <Copy Condition="'$(TargetPath)' != ''" SourceFiles="$(TargetPath)" DestinationFolder="$(GamePath)/UserLibs/Overlayer" SkipUnchangedFiles="true" />
+        <Copy Condition="'$(TargetPath)' != ''" SourceFiles="$(TargetPath)" DestinationFolder="$(GamePath)/UserLibs" SkipUnchangedFiles="true" />
     </Target>
 </Project>

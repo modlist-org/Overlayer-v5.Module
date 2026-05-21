@@ -1,25 +1,28 @@
-using System.Collections.Generic;
+using Overlayer.Core;
 using Overlayer.Localization;
 using Overlayer.Module.ADOFAI.IO;
 using Overlayer.Module.ADOFAI.Patch;
 using Overlayer.Patch.Safe;
+using Overlayer.Resource;
+using Overlayer.UI;
+using Overlayer.UI.Factory;
 using Overlayer.UI.Generator;
 using Overlayer.UI.Objects;
 using Overlayer.UI.Objects.Impl;
 using Overlayer.UI.Utility;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Overlayer.Module.ADOFAI.UI;
 
 public class MainUI {
-    public static void CreateMenu(RectTransform parent) {
-        
-    }
-    
+    public static void CreateMenu(RectTransform parent)
+        => MenuFactory.CreateItem(parent, "ADOFAI", MainCore.Spr.Get(UISprite.Star128), 100);
+
     private static readonly Dictionary<string, UIObject> objects = [];
     
-    public static void CreatePanel(RectTransform parent) {
+    public static void CreatePage(RectTransform parent) {
         GameObject pad = new("Pad");
         pad.transform.SetParent(parent, false);
 
@@ -66,7 +69,11 @@ public class MainUI {
         pad.AddComponent<UIScrollController>().SetContent(contentRect, viewportRect);
 
         ADOFAISettings defSet = new();
-        
+
+        _ = GenerateUI.AddTextH1(GenerateUI.Row(content.transform))
+           .gameObject.AddComponent<TextLocalization>()
+           .Init("ADOFAI", "ADOFAI", Core.Tr);
+
         var spSaj = SafePatchController.Get<SP_ShowAutoJudgment>();
         UIToggle showAutoJudgmentToggle = GenerateUI.Toggle(
             GenerateUI.Row(content.transform),
@@ -86,11 +93,12 @@ public class MainUI {
             "show_autoplay_judgment"
         );
         showAutoJudgmentToggle.OnlyModOn = true;
-        showAutoJudgmentToggle.Label.gameObject.AddComponent<TextLocalization>().Init("SHOW_AUTOPLAY_JUDGMENT", "Show Autoplay Judgment");
+        showAutoJudgmentToggle.Label.gameObject.AddComponent<TextLocalization>().Init("SHOW_AUTOPLAY_JUDGMENT", "Show Autoplay Judgment", Core.Tr);
         objects[showAutoJudgmentToggle.Id] = showAutoJudgmentToggle;
         showAutoJudgmentToggle.Rect.AddToolTip(
             "DESC_SHOW_AUTOPLAY_JUDGMENT",
-            "Applies a patch to show the true judgment in AutoPlay on the Hit Error Meter"
+            "Applies a patch to show the true judgment in AutoPlay on the Hit Error Meter",
+            Core.Tr
         );
     }
 }
