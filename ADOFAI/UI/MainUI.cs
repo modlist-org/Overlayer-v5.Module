@@ -17,7 +17,8 @@ namespace Overlayer.Module.ADOFAI.UI;
 
 public class MainUI {
     public static void CreateMenu(RectTransform parent)
-        => MenuFactory.CreateItem(parent, "ADOFAI", MainCore.Spr.Get(UISprite.Star128), 100);
+        => MenuFactory.CreateItem(parent, "ADOFAI", MainCore.Spr.Get(UISprite.Star128), 100)
+        .label.gameObject.AddComponent<TextLocalization>().Init("ADOFAI", "ADOFAI", Core.Tr);
 
     private static readonly Dictionary<string, UIObject> objects = [];
 
