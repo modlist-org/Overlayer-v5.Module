@@ -34,6 +34,8 @@ public class Core : OverlayerModule {
         LoadTr();
         Tr.Language = MainCore.Tr.Language;
 
+        ConfigFile.Load();
+
         SafePatchController.Add(new SP_ShowAutoJudgment());
         SafePatchController.ApplyAll();
 
@@ -44,6 +46,8 @@ public class Core : OverlayerModule {
     public override void OnDispose() {
         MainCore.Tr.OnLoadStart -= LoadTr;
         MainCore.Tr.OnLanguageChanged -= OnLanguageChanged;
+
+        ConfigFile.Save();
     }
 
     public override string Name => Info.Name;
