@@ -7,17 +7,23 @@ using Overlayer.Module.ADOFAI.Patch;
 using Overlayer.Module.ADOFAI.UI;
 using Overlayer.ModuleAPI;
 using Overlayer.Patch.Safe;
+using Overlayer.Resource;
 using Overlayer.UI;
 using Overlayer.UI.Factory;
 using System.IO;
+using System.Reflection;
 
 namespace Overlayer.Module.ADOFAI;
 
 public class Core : OverlayerModule {
-    public static OverlayerLogger Logger => new(MainCore.Host.OverlayerLogger, "ADOFAI Module");
-    public static SettingsFile<ADOFAISettings> ConfigFile = new(Path.Combine(MainCore.Paths.ModulePath, "ADOFAI/Settings.json"));
+    public static Assembly Assembly { get; } = Assembly.GetExecutingAssembly();
+    public static OverlayerLogger Logger { get; } = new (MainCore.Host.OverlayerLogger, "ADOFAI Module");
+    public static SettingsFile<ADOFAISettings> ConfigFile { get; } = new(Path.Combine(MainCore.Paths.ModulePath, "ADOFAI/Settings.json"));
     public static ADOFAISettings Config => ConfigFile.Data;
-    public static Translator Tr = new();
+    public static Translator Tr { get; private set; } = new();
+
+    public static ResourceManager Res { get; } = new(Assembly, "Overlayer.Module.ADOFAI.Resource.Embedded.");
+    public static SpriteManager Spr { get; } = new(Res);
 
     private static void LoadTr()
         => _ = Tr.Load(new(Path.Combine(MainCore.Paths.ModulePath, "ADOFAI/Lang")));
@@ -44,6 +50,9 @@ public class Core : OverlayerModule {
     }
 
     public override void OnDispose() {
+        Spr.Dispose();
+        Res.Dispose();
+
         MainCore.Tr.OnLoadStart -= LoadTr;
         MainCore.Tr.OnLanguageChanged -= OnLanguageChanged;
 

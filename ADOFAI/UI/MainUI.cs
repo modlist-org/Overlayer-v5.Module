@@ -1,9 +1,7 @@
-using Overlayer.Core;
 using Overlayer.Localization;
 using Overlayer.Module.ADOFAI.IO;
 using Overlayer.Module.ADOFAI.Patch;
 using Overlayer.Patch.Safe;
-using Overlayer.Resource;
 using Overlayer.UI.Factory;
 using Overlayer.UI.Generator;
 using Overlayer.UI.Objects;
@@ -17,7 +15,7 @@ namespace Overlayer.Module.ADOFAI.UI;
 
 public class MainUI {
     public static void CreateMenu(RectTransform parent)
-        => MenuFactory.CreateItem(parent, "ADOFAI", MainCore.Spr.Get(UISprite.Star128), 100)
+        => MenuFactory.CreateItem(parent, "ADOFAI", Core.Spr.Get("Image.ADOFAI.png"), 100)
         .label.gameObject.AddComponent<TextLocalization>().Init("ADOFAI", "ADOFAI", Core.Tr);
 
     private static readonly Dictionary<string, UIObject> objects = [];

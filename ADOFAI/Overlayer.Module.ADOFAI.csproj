@@ -400,9 +400,9 @@
         </Reference>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Resource\Embedded\Image\" />
-    </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Resource\Embedded\**\*" />
+	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="Build">
         <MakeDir Directories="$(GamePath)/UserLibs" Condition="'$(TargetPath)' != ''" />
